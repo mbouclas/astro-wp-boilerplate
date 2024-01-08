@@ -1,0 +1,40 @@
+---
+import { SEO } from "astro-seo"
+import Header from "@components/header.svelte";
+import Footer from "@components/footer.astro";
+import {config} from "@data/config";
+
+const { title = config.seo.defaults.title, seo = {} } = Astro.props;
+
+if (!seo.title) {
+    seo.title = title
+}
+seo.og_title = seo.og_title || seo.title;
+seo.og_description = seo.og_description || seo.description;
+
+---
+<html lang="en" class="bg-ebony dark">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/businesslink/image/upload/v1703153059/quality-cars/quality-cars-logo-2_xzfulb.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <SEO
+            extend={seo}
+            description={seo.description || config.seo.defaults.description}
+            title={seo.title || title}
+            canonical={seo.canonical || config.seo.defaults.canonical}
+
+    />
+    <style>
+        .content {
+            content-visibility: auto;
+            content-intrinsic-size: 1px 2500px;
+        }
+    </style>
+</head>
+<body class="text-muted-200">
+<Header client:idle />
+<slot></slot>
+<Footer />
+</body>
+</html>

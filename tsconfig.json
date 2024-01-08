@@ -1,0 +1,20 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["astro/client", "node"],
+    "paths": {
+      "@layouts/*": ["src/layouts/*"],
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@styles/*": ["src/styles/*"],
+      "@services/*": ["src/services/*"],
+      "@partials/*": ["src/partials/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@data/*": ["src/data/*"],
+      "@models/*": ["src/models/*"],
+      "@stores/*": ["src/stores/*"],
+      "@scripts/*": ["src/scripts/*"]
+    }
+  }
+}

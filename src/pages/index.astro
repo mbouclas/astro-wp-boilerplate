@@ -1,0 +1,15 @@
+---
+import Layout from '@layouts/default.astro';
+import {BaseService} from "@services/base.service";
+import type {IHomePage} from "@models/home";
+const allPages = await (new BaseService).load(`all_pages`);
+const home = allPages.find(page => page.slug === 'home') as IHomePage;
+
+const seo = {
+	title: home.yoast_head_json.title,
+	description: home.yoast_head_json.description,
+}
+---
+<Layout {seo}>
+
+</Layout>
